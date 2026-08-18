@@ -1,11 +1,14 @@
 package com.example.acdemic.student;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -13,13 +16,19 @@ public class Student {
     private long id;
 
     private String name;
+    @Column(unique = true, nullable = false)
     private String email;
     private String phone;
     private String department;
     private int year;
 
-    public Student() {
-
+    public Student(String name, String email, String phone,
+            String department, Integer year) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.department = department;
+        this.year = year;
     }
 
     public long getId() {
